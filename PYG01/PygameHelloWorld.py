@@ -4,16 +4,14 @@ import pygame
 
 pygame.init()
 
-vInfo = pygame.display.Info()
-
-size = width, height = vInfo.current_w, vInfo.current_h
+size = width, height = 600,400
 speed = [1,1]
 BLACK = 0,0,0
 
 fps = 300
 fclock = pygame.time.Clock()
 
-screen = pygame.display.set_mode(size,pygame.FULLSCREEN)
+screen = pygame.display.set_mode(size,pygame.RESIZABLE)
 pygame.display.set_caption("My first game design programme")
 
 ball = pygame.image.load("imgs/ball.png")
@@ -34,6 +32,9 @@ while True:
                 speed[1] = speed[1] if speed[1] == 0 else (abs(speed[1]) - 1)*int(speed[1]/abs(speed[1]))
             if event.key == pygame.K_ESCAPE:
                 sys.exit()
+        elif event.type == pygame.VIDEORESIZE:
+            size = width,height = event.size[0], event.size[1]
+            screen = pygame.display.set_mode(size,pygame.RESIZABLE)
     print(speed)
     ballrect = ballrect.move(speed[0], speed[1])
 
