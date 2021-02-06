@@ -4,14 +4,16 @@ import pygame
 
 pygame.init()
 
-size = width, height = 600, 400
+vInfo = pygame.display.Info()
+
+size = width, height = vInfo.current_w, vInfo.current_h
 speed = [1,1]
 BLACK = 0,0,0
 
 fps = 300
 fclock = pygame.time.Clock()
 
-screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode(size,pygame.FULLSCREEN)
 pygame.display.set_caption("My first game design programme")
 
 ball = pygame.image.load("imgs/ball.png")
@@ -30,6 +32,8 @@ while True:
                 speed[1] = speed[1] + 1 if speed[1] >= 0 else speed[1] - 1
             if event.key == pygame.K_DOWN:
                 speed[1] = speed[1] if speed[1] == 0 else (abs(speed[1]) - 1)*int(speed[1]/abs(speed[1]))
+            if event.key == pygame.K_ESCAPE:
+                sys.exit()
     print(speed)
     ballrect = ballrect.move(speed[0], speed[1])
 
