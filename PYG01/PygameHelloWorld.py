@@ -39,7 +39,8 @@ while True:
             size = width,height = event.size[0], event.size[1]
             screen = pygame.display.set_mode(size,pygame.RESIZABLE)
     print(speed)
-    ballrect = ballrect.move(speed[0], speed[1])
+    if pygame.display.get_active():
+        ballrect = ballrect.move(speed[0], speed[1])
 
     if ballrect.left < 0 or ballrect.right > width:
         speed[0] = - speed[0]
