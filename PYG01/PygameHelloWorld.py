@@ -15,6 +15,9 @@ screen = pygame.display.set_mode(size,pygame.RESIZABLE)
 pygame.display.set_caption("My first game design programme")
 
 ball = pygame.image.load("imgs/ball.png")
+
+pygame.display.set_icon(ball)
+
 ballrect = ball.get_rect()
 
 while True:
